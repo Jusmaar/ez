@@ -1,0 +1,70 @@
+<app-nav></app-nav>
+<div class="dash">
+  <div class="container">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-9 estadistica-container">
+          <div class="row" *ngIf="publicacion">
+               <div class="col-md-4">
+                 <div class="row">
+                  <div class="col-6 col-md-12">
+                    <h3>Nro Visitas</h3>
+                    <div class="img-container">
+                      <img [src]="publicacion.urlImages[0]" alt="" class="img-fluid">
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-12">
+                    <p>Marca: <span>{{publicacion.brand.name}}</span> </p>
+                    <p>Modelo: <span>{{publicacion.modelo}}</span> </p>
+                    <p>Operacion: <span>{{publicacion.operacion}}</span> </p>
+                    <div class="d-flex justify-content-center">
+                      <a class="btn-vermas" target="_blanck" [href]="['http://54.91.160.216/pe/maquinarias/'+publicacion.id]">Ver más</a>
+                    </div>
+
+                  </div>
+                 </div>
+                </div>
+              <div class="col-md-8 grafica" *ngIf="cantdataSemana.length>0 && nombresdataSemana.length>0">
+                    <canvas baseChart
+                                [labels]="nombresdataSemana"
+                                [data]="cantdataSemana"
+                                [colors]="lineChartColors"
+                                [chartType]="lineChartType"
+                                (chartHover)="chartHovered($event)"
+                                (chartClick)="chartClicked($event)">
+                    </canvas>
+              </div>
+          </div>
+        </div>
+      </div>
+        <br>
+        <br>
+      <div class="row">
+        <div class="col-md-5 comentarios-barra" *ngIf="nombresdataDia.length>0 && cantdataDia.length>0">
+           <div >
+              <canvas baseChart
+                                [labels]="nombresdataDia"
+                                [data]="cantdataDia"
+                                [colors]="lineChartColors"
+                                [chartType]="lineChartType"
+                                (chartHover)="chartHovered($event)"
+                                (chartClick)="chartClicked($event)">
+            </canvas>
+        </div>
+        </div>
+        <br>
+        <div class="col-md-5 offset-md-2 comentarios-barra" *ngIf="nombresdataMes.length>0 && cantdataMes.length>0">
+           <div>
+              <canvas baseChart
+                               [labels]="nombresdataMes"
+                                [data]="cantdataMes"
+                                [colors]="lineChartColors"
+                                [chartType]="lineChartType"
+                                (chartHover)="chartHovered($event)"
+                                (chartClick)="chartClicked($event)">
+              </canvas>
+            </div>
+        </div>
+      </div>
+  </div>
+
+</div>

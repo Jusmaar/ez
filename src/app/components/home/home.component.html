@@ -1,0 +1,91 @@
+<app-nav></app-nav>
+<div class="dash">
+  <div class="container-fluid">
+    <!-- <div class="row justify-content-md-center">
+      <div class="col-md-5 plan-datos">
+        <h2 class="">120</h2>
+        <p>Total publicaciones</p>
+        <h3>Plan: <span>Ejecutivo</span></h3>
+      </div>
+      <div class="col-md-6">
+        <div class="row justify-content-md-center">
+          <div class="col-md-8 p-desctacada">
+            <div class="p-detalles-head">
+              <p>Destacados</p>
+              <h2>800</h2>
+            </div>
+            <div class="p-detalles">
+              <p>Publicaciones <br> Usadas : <span>700</span></p>
+              <p>Publicaciones <br> Disponibles : <span>100</span></p>
+            </div>
+          </div>
+          <div class="col-md-8 p-simple">
+            <div class="p-detalles-head">
+              <p>Simples</p>
+              <h2>220</h2>
+            </div>
+            <div class="p-detalles">
+              <p>Publicaciones <br> Usadas : <span>150</span></p>
+              <p>Publicaciones <br> Disponibles : <span>70</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <h1 class="vistas"></h1>
+    <div class="row chart-content">
+      <div class="chart-content2">
+          <div class="col-md-6">
+              <div class="nro-publi">
+                <p>Nro.<br>
+                Publicaciones</p>
+                <div>{{cantPubli}}</div>
+              </div>
+            </div>
+            <!-- <div class="col-md-6">
+              <div style="display: block;">
+              <canvas baseChart width="400" height="400"
+                          [datasets]="lineChartData"
+                          [labels]="lineChartLabels"
+                          [options]="lineChartOptions"
+                          [legend]="lineChartLegend"
+                          [chartType]="lineChartType"
+                          [colors]="lineChartColors"
+                          (chartHover)="chartHovered($event)"
+                          (chartClick)="chartClicked($event)"></canvas>
+              </div>
+          </div> -->
+      </div>
+    </div>
+    <br>
+
+    <div class="row coment-content">
+      <div class="col-md-12 coment-content2">
+        <h3>Publicaciones recientes</h3>
+      <hr>
+      <div *ngIf="!ultimasPublic.length">
+        <div>
+          <small>No existen publicaciones recientes ...</small>
+          <a [routerLink]="['/publicar/nuevo']">Publica ya!</a>
+        </div> 
+      </div>
+      <ul class="list-unstyled" *ngIf="ultimasPublic.length > 0">
+        <div *ngFor="let ultimas of ultimasPublic">
+           <li class="media" >
+              <img class="d-flex mr-3" [src]="ultimas.urlImages[0]" alt="Generic placeholder image">
+              <div class="media-body">
+                <h5 class="mt-0 mb-1">{{ultimas.brand.name}} - {{ultimas.modelo}}</h5>
+                {{ultimas.category.name}}
+              </div>
+              <!-- <a [href]="['http://www.easymaq.com/pe/maquinarias/'+ultimas.id]" target="_blanck">Ver</a> -->
+              <a [href]="['http://54.91.160.216/pe/maquinarias/'+ultimas.id]" target="_blanck">Ver</a>
+            </li>
+            <hr>
+        </div>
+      </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
